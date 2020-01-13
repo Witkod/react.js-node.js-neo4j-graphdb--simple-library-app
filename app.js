@@ -30,7 +30,7 @@ var session = drriver.session();
 
 app.use(cors());
 
-app.use('/',express.static('./frontend/dist') );
+app.use('/',express.static('./dist') );
 
 
 
@@ -100,6 +100,8 @@ app.post('/connectActor', async function(req, res){
     
 })
 
-app.listen(3000, () => {
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
     console.log('Server started on port 3000');
 });
