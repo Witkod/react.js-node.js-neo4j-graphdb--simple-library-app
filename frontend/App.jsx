@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
-import { Actors } from "./Actors";
-import { Movies } from "./Movies";
+import { Authors } from "./Authors";
+import { Books } from "./Books";
 
 
 
@@ -19,8 +19,7 @@ export function App() {
         <Licznik />
         <Licznik />
         <Licznik />
-        <Licznik />
-        <Actors />
-        <Movies />
+        <Authors />
+        <Books />
     </div>
 }

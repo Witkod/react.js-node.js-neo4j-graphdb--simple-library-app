@@ -2,17 +2,17 @@ import React, {useState} from 'react';
 import axios from 'axios';
 
 async function getActors() {
-    const response = await axios.get('/actors');
+    const response = await axios.get('http://localhost:3000/actors');
 
     return response.data;
 }
 
 async function addActor(data) {
-    await axios.post('/addActor', data);
+    await axios.post('http://localhost:3000/addActor', data);
 }
 
 
-export function Actors() {
+export function Books() {
     const [actors, setActors] = useState([]);
     const [name, setName] = useState('');
 

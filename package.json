@@ -10,7 +10,8 @@
     "dev": "parcel frontend/index.html"
   },
   "engines": {
-    "node": "12.13.0"
+    "node": "12.13.0",
+    "yarn": "1.x"
   },
   "author": "",
   "license": "ISC",

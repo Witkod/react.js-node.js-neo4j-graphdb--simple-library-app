@@ -1,23 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-async function getActors() {
-    const response = await axios.get('http://localhost:3000/actors');
+async function getAuthors() {
+    const response = await axios.get('/actors');
 
-    return response.data;
+    return response.data;d
 }
 
 async function addActor(data) {
-    await axios.post('http://localhost:3000/addActor', data);
+    await axios.post('/addAuthor', data);
 }
 
 
-export function Movies() {
+export function Authors() {
     const [actors, setActors] = useState([]);
     const [name, setName] = useState('');
 
     function loadActors() {
-        getActors().then(actors => {
+        getAuthors().then(actors => {
+          console.log(actors);
             setActors(actors);
         })
     }
@@ -33,7 +34,7 @@ export function Movies() {
         loadActors();
     }
 
-
+    useEffect(()=>{loadActors()},[]); //loading actors after first load site
 
     
 
