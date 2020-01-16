@@ -20,13 +20,12 @@ module.exports.addAuthor = async function addAuthor(data, session) {
     return newAuthor.toObject().author;
 }
 
-module.exports.getAuthor = async function getAuthor(name, session) {
-    const response = await session.run( `MATCH (actor:Actor)-[:PlaysIn]->(movie:Movie) WHERE actor.name = '${name}' RETURN actor, movie`);
+module.exports.getAuthor = async function getAuthor(name, surname, session) {
+    const response = await session.run( `MATCH (book:Book)-[:WroteBy]->(author:Author) WHERE author.name = '${name}' AND author.surname = '${surname}' RETURN author, book`);
   
     // const newActor = response.records[0];
     const [authorData] = response.records;
 
     console.log('co mamy', authorData.toObject());
-
     return authorData.toObject();
 }

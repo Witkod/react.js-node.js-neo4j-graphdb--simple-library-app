@@ -2,59 +2,74 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 async function getAuthors() {
-    const response = await axios.get('/actors');
-
-    return response.data;d
+    const response = await axios.get('/authors');
+    return response.data;
 }
 
-async function addActor(data) {
+async function addAuthor(data) {
     await axios.post('/addAuthor', data);
 }
 
+async function deleteAuthors(data) {
+    await axios.post('/deleteAuthors', data);
+}
 
-export function Authors() {
-    const [actors, setActors] = useState([]);
+export function Authors(props) {
+    const [authors, setAuthors] = useState([]);
     const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
 
-    function loadActors() {
-        getAuthors().then(actors => {
-          console.log(actors);
-            setActors(actors);
+    function loadAuthors() {
+        getAuthors().then(authors => {
+          console.log('dzialaaam!');
+            setAuthors(authors);
         })
     }
 
-    async function finishAddingActor() {
-        if (!name) {
-            alert('nazwa wymagana');
+    async function finishAddingAuthor() {
+        if (!name || !surname) {
+            alert('brak wszystkich danych');
             return;
         }
 
-        await addActor({name: name, born: 1992});
-
-        loadActors();
+        await addAuthor({name: name, surname: surname});
+        loadAuthors();
+        props.onNewAuthorAdded();
     }
 
-    useEffect(()=>{loadActors()},[]); //loading actors after first load site
+    async function finishDeleteAuthors() {
+        if (!name || !surname) {
+            alert('brak wszystkich danych');
+            return;
+        }
 
-    
+        await deleteAuthors({name: name, surname: surname});
+        loadAuthors();
+        props.onNewAuthorAdded();
+    }
 
-    console.log(actors);
-
+    // useEffect(()=>{loadAuthors()},[]); 
+    // console.log(authors);
 
     return <div>
-        <div>
-            <div>Dodaj aktora (nowa nazwa: {name})</div>
-            <input type="text" placeholder="Nazwa..." value={name} onChange={event => setName(event.target.value)} />
-            <button onClick={finishAddingActor}>Dodaj</button>
+        <div className="ToolForm">
+            <p>Dodaj Autora</p>
+            <input type="text" placeholder="Imie..." value={name} onChange={event => setName(event.target.value)} />
+            <input type="text" placeholder="Nazwisko..." value={surname} onChange={event => setSurname(event.target.value)} />
+            <br></br>
+            <button className="MenuButton" onClick={finishAddingAuthor}>Dodaj</button>
+            <br></br>
         </div>
-        <div>tu bedzie lista (ilosc aktorow: {actors.length})</div>
-        <div>
-            {actors.map(actor => {
-                return <div className="actor">aktor tu bedzie (imie: {actor.properties.name})</div>
-            })}
+        <br></br>
+        <br></br>
+        <div className="ToolForm">
+            <p>Usun Autorow</p>
+            <input type="text" placeholder="Imie..." value={name} onChange={event => setName(event.target.value)} />
+            <input type="text" placeholder="Nazwisko..." value={surname} onChange={event => setSurname(event.target.value)} />
+            <br></br>
+            <button className="MenuButton" onClick={finishDeleteAuthors}>Usun</button>
+            <br></br>
         </div>
-        <div>
-            <button onClick={loadActors}>laduj</button>
-        </div>
+    
     </div>
 }

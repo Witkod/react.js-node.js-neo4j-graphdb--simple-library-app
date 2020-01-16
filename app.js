@@ -6,7 +6,7 @@ var neo4j = require('neo4j-driver');
 var cors = require('cors')
 
 const authorApi = require('./author');
-const movieApi = require('./movie');
+const bookApi = require('./book');
 
 var app = express();
 
@@ -19,46 +19,77 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const USER_PASS = `b.fs2rKZ2XCYCA.wRTuwOvwWxj8JJxM`;
 var drriver = neo4j.driver('bolt://hobby-jgiciegnhcgngbkejagpohel.dbs.graphenedb.com:24787', neo4j.auth.basic('user2',USER_PASS), {encrypted: true});
-var session = drriver.session();
+// var session = drriver.session();
 
 app.use(cors());
 app.use('/',express.static('./dist') );
 
 
 app.post('/addAuthor', async function(req, res){
-    const newAuthor = await authorApi.addAuthor(req.body, session);
-    console.log('new', newAuthor);
+    const newAuthor = await authorApi.addAuthor(req.body, drriver.session());
+    // console.log('new', newAuthor);
     res.json(newAuthor); 
 })
 
-app.post('/addMovie', async function(req, res){
-    const newMovie = await movieApi.addMovie(req.body, session);
-    res.json(newMovie);
+app.post('/addBook', async function(req, res){
+    const newBook = await bookApi.addBook(req.body, drriver.session());
+    res.json(newBook);
 })
 
-app.get('/actors', async function(req, res){
-    const response = await session.run( `MATCH (actor:Actor) RETURN actor`);
-    const recordsJson = response.records.map(record => record.toObject().actor)
+app.get('/authors', async function(req, res){
+    const response = await drriver.session().run( `MATCH (author:Author) RETURN author`);
+    const recordsJson = response.records.map(record => record.toObject().author)
     res.json(recordsJson);   
 })
 
-app.get('/actor/:name', async function(req, res){
-    const actor = await authorApi.getAuthor(req.param('name'), session);
-    res.json(actor);    
+// app.get('/actor/:name', async function(req, res){
+//     const author = await authorApi.getAuthor(req.param('name'), session);
+//     res.json(author);    
+// })
+app.get('/author', async function(req, res){
+    const {authorName, authorSurname} = req.body;
+    const author = await authorApi.getAuthor(authorName, authorSurname, drriver.session());
+    res.json(author);    
 })
 
-app.get('/movies', async function(req, res){
-    const response = await session.run( `MATCH (movie:Movie) RETURN movie`);
-    const recordsJson = response.records.map(record => record.toObject().movie)
+app.get('/books', async function(req, res){
+    const response = await drriver.session().run( `MATCH (book:Book) RETURN book`);
+    const recordsJson = response.records.map(record => record.toObject().book)
     res.json(recordsJson);
 })
 
-app.post('/connectActor', async function(req, res){
-    const {actorName, movieTitle} = req.body;
-    await session.run( `MATCH (actor:Actor) WHERE actor.name = '${actorName}' MATCH (movie:Movie) WHERE movie.title = '${movieTitle}' CREATE (actor)-[:PlaysIn]->(movie)`);
-    // MATCH (n1)-[r]->(n2) RETURN r, n1, n2 LIMIT 25
-    console.log('done');
-    res.json({result: 'relationCreated'});
+app.post('/connectAuthor', async function(req, res){
+    const {authorName, authorSurname, bookTitle} = req.body;
+    const response = await drriver.session().run( `MATCH (author:Author) WHERE author.name = '${authorName}' AND author.surname = '${authorSurname}' MATCH (book:Book) WHERE book.title = '${bookTitle}' CREATE (book)-[:WroteBy]->(author) RETURN book, author`);
+
+    const recordsJson = response.records.map(record => record.toObject())
+     res.json(recordsJson);
+})
+
+app.get('/booksWithWriterInfo', async function(req, res){
+    const response = await drriver.session().run( `MATCH (book:Book)-[:WroteBy]->(author:Author) RETURN author, book`);
+  
+    const recordsJson = response.records.map(record => record.toObject());
+    // console.log(recordsJson);
+    res.json(recordsJson);
+})
+
+app.post('/deleteAuthors', async function(req, res){
+    const {name, surname} = req.body;
+    const response = await drriver.session().run( `MATCH (n:Author { name: '${name}', surname: '${surname}'}) detach DELETE n`);
+  
+    // const recordsJson = response.records.map(record => record.toObject());
+    // console.log(recordsJson);
+    res.json(response);
+})
+
+app.post('/deleteBooks', async function(req, res){
+    const {title} = req.body;
+    const response = await drriver.session().run( `MATCH (n:Book { title: '${title}'}) detach DELETE n`);
+  
+    // const recordsJson = response.records.map(record => record.toObject());
+    // console.log(recordsJson);
+    res.json(response);
 })
 
 const port = process.env.PORT || 3000;

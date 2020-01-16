@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)https://projektmucha.azurewebsites.net/static/docs/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Bootstrap 4 project documentation theme for developers</title>
+    <!-- Meta -->
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="./docs_files/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="./docs_files/style.css">    
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="./docs_files/styles.css">
+
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style></head> 
+
+<body class="landing-page">   
+	
+	<!-- GITHUB BUTTON JS -->
+    <script src="./docs_files/sdk.js.pobrane" async="" crossorigin="anonymous"></script><script id="facebook-jssdk" src="./docs_files/sdk.js(1).pobrane"></script><script async="" defer="" src="./docs_files/buttons.js.pobrane"></script>
+     
+    <!--FACEBOOK LIKE BUTTON JAVASCRIPT SDK-->
+    <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div><iframe name="fb_xdm_frame_https" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="./docs_files/xd_arbiter.html" style="border: none;"></iframe></div><div></div></div></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    
+    <div class="page-wrapper">
+        
+        <!-- ******Header****** -->
+        <header class="header text-center">
+            <div class="container">
+
+            </div><!--//container-->
+        </header><!--//header-->
+        
+        <section class="cards-section text-center">
+            <div class="container">
+                <div id="cards-wrapper">
+                    <div class="item item-green">
+                        <div class="item-inner">
+                            <div class="icon-holder">
+                                <i class="icon fa fa-paper-plane"></i>
+                            </div><!--//icon-holder-->
+                            <h3 class="title">Wdrożenie</h3>
+                            Apliakcja jest osadzona na platformie Heroku: <a href="https://heroku.com">https://heroku.com</a><br>
+                            Działanie opiera się na stylu REST.<br>
+                            Stos technologinczy:
+                            <li>Frontend: ReactJS</li>
+                            <li>Backend: NodeJS</li>
+                            <li>Baza Danych: GrapheneDB</li>
+                        </div><!--//item-inner-->
+                    </div><!--//item-->
+                    <div class="item item-pink">
+                        <div class="item-inner">
+                            <div class="icon-holder">
+                                <span aria-hidden="true" class="icon icon_genius"></span>
+                            </div><!--//icon-holder-->
+                            <h3 class="title">Dokumentacja kodu</h3>
+                            <div>
+                            <code>
+                                getBooks()<br>
+                            </code>
+                            <p><b>Opis</b>: Funkcja pobiera wszystkie książki zapisane w bazie danych
+                            </div>
+                            <div>
+                            <code>
+                                getAuthors()<br>
+                            </code>
+                            <p><b>Opis</b>: funkcja pobiera wszystkich autorów zapisanych w bazie danych</p>
+                            </div>
+                            <div>
+                            <code>
+                                getBooksWithWriterInfo()<br>
+                            </code>
+                            <p><b>Opis</b>: Funkcja pobiera wszystkie książki, które posiadają przypisanego autora</p>
+                            </div>
+                            <div>
+                            <code>
+                                addBook(data)<br>
+                            </code>
+                            <p><b>Opis</b>: Funkcja dodaje do bazy książkę o podanym tytule</p>
+                            <p><b>data</b>: informacje o tytule książki </p>
+                            </div>
+                            <div>
+                            <code>
+                                deleteBooks(data)<br>
+                            </code>
+                            <p><b>Opis</b>: funkcja usuwa z bazy danych wszystkie osoby o podanym imieniu i nazwisku</p>
+                            <p><b>data</b>: informacje o tytule książki</p>
+                            </div>
+                            <div>
+                            <code>
+                                connectAuthor(data)<br>
+                            </code>
+                            <p><b>Opis</b>: funkcja przypisuje książkom o podanym tytule autora o podanym imieniu i nazwisku</p>
+                            <p><b>data</b>: dane o o tytule książki oraz o imieniu i nazwisku autora, którego chcemy przypisać</p>
+                            </div>
+                            <div>
+                            <code>
+                                getAuthors()<br>
+                            </code>
+                            <p><b>Opis</b>: Pobiera wszystkich autorów zapisanych w bazie danych</p>
+                            </div>
+                            <div>
+                            <code>
+                                addAuthor(data)<br>
+                            </code>
+                            <p><b>Opis</b>: Dodaje autora o podanym imieniu i nazwisku do bazy danych</p>
+                            <p><b>data</b>: imie i nazwisko autora</p>
+                            </div>
+                            <div>
+                            <code>
+                                deleteAuthors(data)<br>
+                            </code>
+                            <p><b>Opis</b>: Usuwa autorów o podanym imieniu i nazwisku</p>
+                            <p><b>data</b>: Imie i nazwisko autora</p>
+                            </div>
+                            <div>
+                            </div>
+                        </div><!--//item-inner-->
+                    </div><!--//item-->
+                    <div class="item item-blue">
+                        <div class="item-inner">
+                            <div class="icon-holder">
+                                <span aria-hidden="true" class="icon icon_genius"></span>
+                            </div><!--//icon-holder-->
+                            <h3 class="title">Dokumentacja web API</h3>
+                            <div>
+                            <h4 class="title">Formularz 'Dodaj Ksiazke'</h4>
+                            <p>Odpowiada za dodawanie nowej książki do bazy danych. Wymaga informacji o tytule.</p>
+                            </div>
+                            <div>
+                            <h4 class="title">Formularz 'Usun Ksiazki'</h4>
+                            <p>Usuwa wszystkie ksiazki o podanym tytule</p>
+                            </div>
+                            <div>
+                            <h4 class="title">Formularz 'Dodaj Autora'</h4>
+                            <p>Dodaje nowego autora do bazy danych. Wymaga podania imienia i nazwiska.</p>
+                            </div>
+                            <div>
+                            <h4 class="title">Formularz 'Usun autorow'</h4>
+                            <p>Usuwa wszystkich autorow o podanym imieniu i nazwisku</p>
+                            </div>
+                            <div>
+                            <h4 class="title">Formularz 'Przypisz autora do ksiazki'</h4>
+                            <p>Pozwala na wybranie z list rozwijanych jakiego autora chcemy przypisać wskazanej książce</p>
+                            </div>
+                            <div>
+                            <h4 class="title">Tabela 'Spis książek'</h4>
+                            <p>Wyświetla wszystkie książki, którym przypisano autora</p>
+                            </div>
+                            <div>
+                            <h4 class="title">Przycisk 'Docs'</h4>
+                            <p>Przekierowuje do niniejszej dokumentacji</p>
+                            </div>
+                        </div><!--//item-inner-->
+                    </div><!--//item-->
+                </div><!--//cards-->
+            </div><!--//container-->
+        </section><!--//cards-section-->
+    </div><!--//page-wrapper-->
+    
+    <footer class="footer text-center">
+        <div class="container">
+            <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->
+            <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small><br>
+            <small class="copyright">Retarded <i class="fas fa-heart"></i> by <a href="https://https//github.com/Shadoba/" target="_blank">Bartek Mucha</a> for himself</small>
+            
+        </div><!--//container-->
+    </footer><!--//footer-->
+    
+
+ 
+
+</body></html>
